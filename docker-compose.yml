@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Docker/Dockerfile
+    volumes:
+      - .:/application
+    container_name: cloudf-pubsub-schedule-python-app
+    ports:
+      - "5555:5000"
+    tty: true
+  gcloud:
+    image: google/cloud-sdk:latest
+    build:
+      context: .
+      dockerfile: ./Docker/gcloud.Dockerfile
+    container_name: gcloud
+    volumes:
+      - .:/app
+    tty: true
+    
