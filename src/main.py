@@ -8,6 +8,10 @@ load_dotenv(verbose=True)
 dotenv_path = join(dirname(__file__), ".env")
 load_dotenv(dotenv_path)
 
+PROJECT_ID = os.environ.get("PROJECT_ID")
+SECRET_NAME = os.environ.get("SECRET_NAME")
+VERSION = os.environ.get("VERSION")
+
 def process(n: int):
     result = n * 2 * 34 / 12 % 23
     return str(result)
@@ -21,7 +25,7 @@ def get_secret(project_id: str, secret_name: str, version: str):
 
 
 def main(*args):
-    credential_data = get_secret("79432760668", "my-secrets", "1")
+    credential_data = get_secret(PROJECT_ID, SECRET_NAME, VERSION)
     print("secret: ", credential_data)
     arr = np.arange(1000000)
     vprocess = np.vectorize(process)
