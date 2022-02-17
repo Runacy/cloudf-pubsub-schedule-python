@@ -7,5 +7,5 @@ steps:
   - main
   - --region=asia-northeast1
   - --source=.
-  - --trigger-http
+  - --trigger-topic=<TOPIC_NAME>
   - --runtime=python39

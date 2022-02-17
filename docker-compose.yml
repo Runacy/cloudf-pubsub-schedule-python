@@ -9,7 +9,7 @@ services:
       - .:/application
     container_name: cloudf-pubsub-schedule-python-app
     ports:
-      - "5555:5000"
+      - "5551:5000"
     tty: true
   gcloud:
     image: google/cloud-sdk:latest

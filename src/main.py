@@ -1,14 +1,28 @@
 import numpy as np
+from google.cloud import secretmanager
+from dotenv import load_dotenv
+import os
+from os.path import join, dirname
 
-
+load_dotenv(verbose=True)
+dotenv_path = join(dirname(__file__), ".env")
+load_dotenv(dotenv_path)
 
 def process(n: int):
     result = n * 2 * 34 / 12 % 23
     return str(result)
 
-# 引数にrequestを追加する
-# flask.requestが引数に渡されるため、
-def main(request) -> str:
+def get_secret(project_id: str, secret_name: str, version: str):
+    client = secretmanager.SecretManagerServiceClient()
+    name = client.secret_version_path(project_id, secret_name, version)
+    response = client.access_secret_version(name=name)
+    return response.payload.data.decode("UTF-8")
+
+
+
+def main(*args):
+    credential_data = get_secret("79432760668", "my-secrets", "1")
+    print("secret: ", credential_data)
     arr = np.arange(1000000)
     vprocess = np.vectorize(process)
     result = vprocess(arr)
