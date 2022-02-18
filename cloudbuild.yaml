@@ -9,3 +9,4 @@ steps:
   - --source=.
   - --trigger-topic=<TOPIC_NAME>
   - --runtime=python39
+  - --set-secrets=/application/src/google-credential.json=projects/79432760668/secrets/my-secrets/versions/2
