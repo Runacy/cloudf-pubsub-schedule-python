@@ -16,7 +16,6 @@ TOPIC=$1-topic
 docker exec -it  gcloud bash -c "gcloud scheduler jobs delete ${TOPIC}-job --location=asia-northeast1"
 docker exec -it  gcloud bash -c "gcloud alpha pubsub subscriptions delete cron-sub"
 docker exec -it  gcloud bash -c "gcloud pubsub topics delete ${TOPIC}"
-docker exec -it  gcloud bash -c "gcloud functions delete main"
 
 set -eu
 docker exec -it  cloudf-pubsub-schedule-python-app bash -c "cd /application/src/ && poetry export -f requirements.txt -o requirements.txt"

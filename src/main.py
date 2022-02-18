@@ -4,7 +4,6 @@ from google.oauth2 import service_account
 from dotenv import load_dotenv
 import os
 from os.path import join, dirname
-import pprint
 
 load_dotenv(verbose=True)
 dotenv_path = join(dirname(__file__), ".env")
