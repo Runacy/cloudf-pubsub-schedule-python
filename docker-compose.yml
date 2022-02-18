@@ -12,12 +12,10 @@ services:
       - "5551:5000"
     tty: true
   gcloud:
-    image: google/cloud-sdk:latest
     build:
       context: .
       dockerfile: ./Docker/gcloud.Dockerfile
     container_name: gcloud
     volumes:
       - .:/app
-    tty: true
     

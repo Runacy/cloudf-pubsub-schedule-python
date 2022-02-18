@@ -35,7 +35,9 @@ def get_secret(project_id: str, secret_name: str, version: str):
     response = client.access_secret_version(name=name)
     return response.payload.data.decode("UTF-8")
 
-
+def parse_env(envs):
+    pairs = [pair.split("=") for pair in envs.split("\n")]
+    return {var: val for var, val in pairs}
 
 def main(*args):
     print("start!")
@@ -43,7 +45,7 @@ def main(*args):
         print("そもそも読めるの？")
         print("読めた!")
     credential_data = get_secret(PROJECT_ID, SECRET_NAME, VERSION)
-    print("secret: ", credential_data)
+    print(parse_env(credential_data))
     arr = np.arange(100)
     vprocess = np.vectorize(process)
     result = vprocess(arr)
@@ -55,4 +57,4 @@ if __name__ == "__main__":
     """
     適当な処理
     """
-    print(main())
+    main()
