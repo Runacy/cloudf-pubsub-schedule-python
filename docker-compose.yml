@@ -15,7 +15,6 @@ services:
     build:
       context: .
       dockerfile: ./Docker/gcloud.Dockerfile
-    container_name: gcloud
     volumes:
       - .:/app
     tty: true
