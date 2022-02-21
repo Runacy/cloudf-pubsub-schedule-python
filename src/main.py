@@ -14,7 +14,7 @@ keyfile_name = '/application/src/google-credential.json'
 
 
 PROJECT_ID="79432760668"
-SECRET_NAME="my-secrets"
+SECRET_NAME="functions-secret"
 VERSION=1
 
 

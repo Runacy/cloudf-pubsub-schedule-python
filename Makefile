@@ -23,6 +23,7 @@ gcloud:
 
 gcloud-secret:
 	docker exec -it  gcloud bash -c "gcloud secrets create ${name} --data-file='/app/src/.env' --replication-policy='automatic'"
+	docker exec -it  gcloud bash -c "gcloud secrets versions add ${name} --data-file='/app/src/google-credential.json'"
 
 
 gcloud-deploy:
